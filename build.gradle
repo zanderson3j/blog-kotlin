@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.2.51'
+		kotlinVersion = '1.2.41'
 		springBootVersion = '2.0.6.RELEASE'
 	}
 	repositories {
@@ -51,4 +51,13 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	runtimeOnly('com.h2database:h2')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.boot:spring-boot-starter-test') {
+		exclude module: 'junit'
+	}
+	testImplementation('org.junit.jupiter:junit-jupiter-api')
+	testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine')
+}
+
+test {
+	useJUnitPlatform()
 }
